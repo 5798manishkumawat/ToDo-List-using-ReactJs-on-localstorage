@@ -67,14 +67,15 @@ class Todo extends Component {
     this.fetch();
 
     const list = [...this.state.list];
+    const updt = list.filter((task) => task.id !== id);
+    // list.map((task) => {
+    //   if (task.id == id) {
+    //     list.splice(task, 1);
+    //   }
+    // });
+    this.setState({ list: updt });
 
-    list.map((task) => {
-      if (task.id == id) {
-        list.splice(task, 1);
-      }
-    });
-    this.setState({ list });
-    localStorage.setItem(`store${this.props.passEmail}`, JSON.stringify(list));
+    localStorage.setItem(`store${this.props.passEmail}`, JSON.stringify(updt));
   }
 
   doneTask(id, ack) {
