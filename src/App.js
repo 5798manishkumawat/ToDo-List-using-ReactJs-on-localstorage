@@ -3,11 +3,11 @@ import "./App.css";
 import LOGIN from "./componenets/login";
 
 function App() {
-  return (
-    <div class="bg">
-      <LOGIN />
-    </div>
-  );
+	return (
+		<div className="bg">
+			<LOGIN />
+		</div>
+	);
 }
 
 export default App;
