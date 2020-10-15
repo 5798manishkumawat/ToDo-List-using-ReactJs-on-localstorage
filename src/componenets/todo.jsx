@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useCallback } from "react";
 import { useEffect } from "react";
 import "../todo.css";
 
@@ -12,12 +13,8 @@ function Todo (props) {
 	const toggleState = (id) => {
 		setisediting(id);
 	}
-
-	useEffect(() => {
-		fetch();
-	}, []);
-
-	const fetch = () => {
+	
+	const fetch = useCallback(() => {
 		if (localStorage.getItem(`store${props.passEmail}`) === null) {
 			setlist([]);
 		} else {
@@ -26,9 +23,13 @@ function Todo (props) {
 			);
 			setlist(List);
 		}
-	}
+	},[props.passEmail]);
+
+	useEffect(() => {
+		fetch()
+	}, [fetch]);
+
 	const updateTask = (id) => {
-		fetch();
 
 		const List = [...list];
 
@@ -44,7 +45,6 @@ function Todo (props) {
 		setUpdating("");
 	}
 	const addTask = () => {
-		fetch();
 		const NewTask = {
 			id: 1 + Math.random(),
 			isDone: false,
@@ -58,7 +58,6 @@ function Todo (props) {
 	}
 
 	const removeTask = (id) => {
-		fetch();
 
 		const List = [...list];
 		const updt = List.filter((task) => task.id !== id);
@@ -68,7 +67,6 @@ function Todo (props) {
 	}
 
 	const doneTask = (id, ack) => {
-		fetch();
 
 		const List = [...list];
 		List.map((task) => {
