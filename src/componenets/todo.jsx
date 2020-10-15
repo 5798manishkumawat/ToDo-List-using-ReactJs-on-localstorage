@@ -1,102 +1,89 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 import "../todo.css";
 
-class Todo extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			newTask: "",
-			list: [],
-			isediting: null,
-			editedInput: "",
-		};
+function Todo (props) {
+
+	const [newTask,setnewTask] = useState("");
+	const [list,setlist] = useState([]);
+	const [isediting,setisediting]=useState(null);
+	const [updating,setUpdating] = useState("");
+
+	const toggleState = (id) => {
+		setisediting(id);
 	}
 
-	toggleState(id) {
-		// const isediting = this.state.isediting;
-		this.setState({ isediting: id });
-	}
+	useEffect(() => {
+		fetch();
+	}, []);
 
-	componentDidMount = async () => {
-		this.fetch();
-	};
-
-	fetch() {
-		if (localStorage.getItem(`store${this.props.passEmail}`) === null) {
-			this.setState({ list: [] });
+	const fetch = () => {
+		if (localStorage.getItem(`store${props.passEmail}`) === null) {
+			setlist([]);
 		} else {
-			let list = JSON.parse(
-				localStorage.getItem(`store${this.props.passEmail}`)
+			let List = JSON.parse(
+				localStorage.getItem(`store${props.passEmail}`)
 			);
-			this.setState({ list });
+			setlist(List);
 		}
 	}
-	updateInput(key, value) {
-		this.setState({ [key]: value });
-	}
-	updateTask(id) {
-		this.fetch();
+	const updateTask = (id) => {
+		fetch();
 
-		const list = [...this.state.list];
+		const List = [...list];
 
-		list.map((task) => {
+		List.map((task) => {
 			if (task.id === id) {
-				task.value = this.input.value;
+				task.value = updating;
 			}
 		});
-		console.log(list);
-		this.setState({ list });
-		this.setState({ isediting: null });
-		localStorage.setItem(`store${this.props.passEmail}`, JSON.stringify(list));
+		console.log(List);
+		setlist(List);
+		setisediting(null);
+		localStorage.setItem(`store${props.passEmail}`, JSON.stringify(List));
+		setUpdating("");
 	}
-	addTask() {
-		this.fetch();
-		const newTask = {
+	const addTask = () => {
+		fetch();
+		const NewTask = {
 			id: 1 + Math.random(),
 			isDone: false,
-			value: this.state.newTask.slice(),
+			value: newTask.slice(),
 		};
-		const list = [...this.state.list];
+		const List = [...list];
 
-		list.push(newTask);
-		this.setState({ list });
-		localStorage.setItem(`store${this.props.passEmail}`, JSON.stringify(list));
+		List.push(NewTask);
+		setlist(List);
+		localStorage.setItem(`store${props.passEmail}`, JSON.stringify(List));
 	}
 
-	removeTask(id) {
-		this.fetch();
+	const removeTask = (id) => {
+		fetch();
 
-		const list = [...this.state.list];
-		const updt = list.filter((task) => task.id !== id);
-		// list.map((task) => {
-		//   if (task.id == id) {
-		//     list.splice(task, 1);
-		//   }
-		// });
-		this.setState({ list: updt });
+		const List = [...list];
+		const updt = List.filter((task) => task.id !== id);
+		setlist(updt);
 
-		localStorage.setItem(`store${this.props.passEmail}`, JSON.stringify(updt));
+		localStorage.setItem(`store${props.passEmail}`, JSON.stringify(updt));
 	}
 
-	doneTask(id, ack) {
-		this.fetch();
+	const doneTask = (id, ack) => {
+		fetch();
 
-		const list = [...this.state.list];
-		list.map((task) => {
+		const List = [...list];
+		List.map((task) => {
 			if (task.id === id) {
 				task.isDone = ack;
 			}
 		});
-		this.setState({ list });
-		localStorage.setItem(`store${this.props.passEmail}`, JSON.stringify(list));
+		setlist(List);
+		localStorage.setItem(`store${props.passEmail}`, JSON.stringify(List));
 	}
-
-	render() {
 		return (
 			<div>
 				<center>
-					<div class="form">
-						<div class="container">
+					<div className="form">
+						<div className="container">
 							<label htmlFor="todo">
 								<h3 style={{ color: "white" }}>Let's add one more task.....</h3>
 							</label>
@@ -104,32 +91,30 @@ class Todo extends Component {
 								type="text"
 								name="todo"
 								placeholder="type task here"
-								value={this.state.newTask}
-								onChange={(e) => this.updateInput("newTask", e.target.value)}
+								value={newTask}
+								onChange={(e) => setnewTask(e.target.value)}
 							></input>
-							<button class="btn" onClick={() => this.addTask()}>
+							<button className="btn" onClick={() => addTask()}>
 								Add
 							</button>
 						</div>
 					</div>
 					<br />
 					<br />
-					<div class="todolist">
-						{this.state.list.map((task) => {
-							if (this.state.isediting === task.id) {
+					<div className="todolist">
+						{list.map((task) => {
+							if (isediting === task.id) {
 								return (
-									<div class="li" key={task.id}>
+									<div className="li" key={task.id}>
 										<input
 											name="editinput"
 											type="text"
 											defaultValue={task.value}
-											ref={(value) => {
-												this.input = value;
-											}}
+											onChange={(e)=>setUpdating(e.target.value)}
 										/>
 										<button
-											class="edittaskbtn"
-											onClick={() => this.updateTask(task.id)}
+											className="edittaskbtn"
+											onClick={() => updateTask(task.id)}
 										>
 											UpdateTask
 										</button>
@@ -137,33 +122,33 @@ class Todo extends Component {
 								);
 							} else {
 								return (
-									<div class="li" key={task.id}>
-										<h4 class="tasktitle">{task.value}</h4>
+									<div className="li" key={task.id}>
+										<h4 className="tasktitle">{task.value}</h4>
 										{task.isDone === true && (
-											<button class="taskbtn">Completed</button>
+											<button className="taskbtn">Completed</button>
 										)}
 
 										<button
-											class="taskbtn"
-											onClick={() => this.removeTask(task.id)}
+											className="taskbtn"
+											onClick={() => removeTask(task.id)}
 										>
 											Remove
 										</button>
 
 										{task.isDone === false && (
 											<button
-												class="taskbtn"
-												onClick={() => this.toggleState(task.id)}
+												className="taskbtn"
+												onClick={() => toggleState(task.id)}
 											>
 												Edit
 											</button>
 										)}
 										{task.isDone === false && (
 											<button
-												class="taskbtn"
-												onClick={() => this.doneTask(task.id, true)}
+												className="taskbtn"
+												onClick={() => doneTask(task.id, true)}
 											>
-												Incomplete
+												Complete
 											</button>
 										)}
 									</div>
@@ -174,7 +159,6 @@ class Todo extends Component {
 				</center>
 			</div>
 		);
-	}
 }
 
 export default Todo;
