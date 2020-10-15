@@ -11,7 +11,7 @@ function Login() {
 	const [currentEmail, setcurrentEmail] = useState("");
 
 	useEffect(() => {
-		fetch();
+			fetch();
 		setcurrentEmail("");
 	}, []);
 
@@ -25,7 +25,7 @@ function Login() {
 	};
 
 	const registerUser = () => {
-		fetch();
+
 		const newUser = {
 			id: 1 + Math.random(),
 			email: newEmail.slice(),
@@ -53,7 +53,7 @@ function Login() {
 	};
 
 	const loginUser = () => {
-		fetch();
+
 		const userlist = [...userList];
 		let f = false;
 		userlist.map((user) => {

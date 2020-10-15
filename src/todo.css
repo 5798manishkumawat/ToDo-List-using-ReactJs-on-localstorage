@@ -1,74 +1,74 @@
 html {
-  font-family: "Lucida Sans", sans-serif;
-  background-image: url("bg.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  height: 100%;
+	font-family: "Lucida Sans", sans-serif;
+	background-image: url("bg.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	height: 100vh;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 input[name="editinput"] {
-  width: 70%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+	width: 70%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
 }
 
 .edittaskbtn {
-  background-color: rgb(157, 238, 160);
-  border: none;
-  color: black;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 6px;
+	background-color: rgb(157, 238, 160);
+	border: none;
+	color: black;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 6px;
 }
 
 .taskbtn {
-  width: 4%;
-  float: right;
-  background-color: rgb(159, 238, 161);
-  border: none;
-  color: black;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 6px;
+	width: 4%;
+	float: right;
+	background-color: rgb(159, 238, 161);
+	border: none;
+	color: black;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 6px;
 }
 
 .tasktitle {
-  width: 70%;
-  box-sizing: border-box;
-  float: left;
-  padding-top: 0px;
+	width: 70%;
+	box-sizing: border-box;
+	float: left;
+	padding-top: 0px;
 }
 
 .li {
-  box-sizing: border-box;
-  list-style-type: none;
-  width: 100%;
+	box-sizing: border-box;
+	list-style-type: none;
+	width: 100%;
 }
 
 .todolist {
-  width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 10%;
+	width: 100%;
+	box-sizing: border-box;
+	margin-bottom: 10%;
 }
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 600px) {
-  span.psw {
-    display: block;
-    float: none;
-  }
-  .taskbtn .edittaskbtn {
-    color: black;
-  }
+	span.psw {
+		display: block;
+		float: none;
+	}
+	.taskbtn .edittaskbtn {
+		color: black;
+	}
 }
