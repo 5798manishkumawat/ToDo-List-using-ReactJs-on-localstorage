@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useCallback } from "react";
 import { useEffect } from "react";
+import AddTodo from "./addTodo";
+import TodoList from "./todoList";
 import "../todo.css";
 
 function Todo (props) {
@@ -10,10 +12,6 @@ function Todo (props) {
 	const [isediting,setisediting]=useState(null);
 	const [updating,setUpdating] = useState("");
 
-	const toggleState = (id) => {
-		setisediting(id);
-	}
-	
 	const fetch = useCallback(() => {
 		if (localStorage.getItem(`store${props.passEmail}`) === null) {
 			setlist([]);
@@ -79,81 +77,16 @@ function Todo (props) {
 	}
 		return (
 			<div>
-				<center>
-					<div className="form">
-						<div className="container">
-							<label htmlFor="todo">
-								<h3 style={{ color: "white" }}>Let's add one more task.....</h3>
-							</label>
-							<input
-								type="text"
-								name="todo"
-								placeholder="type task here"
-								value={newTask}
-								onChange={(e) => setnewTask(e.target.value)}
-							></input>
-							<button className="btn" onClick={() => addTask()}>
-								Add
-							</button>
-						</div>
-					</div>
-					<br />
-					<br />
-					<div className="todolist">
-						{list.map((task) => {
-							if (isediting === task.id) {
-								return (
-									<div className="li" key={task.id}>
-										<input
-											name="editinput"
-											type="text"
-											defaultValue={task.value}
-											onChange={(e)=>setUpdating(e.target.value)}
-										/>
-										<button
-											className="edittaskbtn"
-											onClick={() => updateTask(task.id)}
-										>
-											UpdateTask
-										</button>
-									</div>
-								);
-							} else {
-								return (
-									<div className="li" key={task.id}>
-										<h4 className="tasktitle">{task.value}</h4>
-										{task.isDone === true && (
-											<button className="taskbtn">Completed</button>
-										)}
-
-										<button
-											className="taskbtn"
-											onClick={() => removeTask(task.id)}
-										>
-											Remove
-										</button>
-
-										{task.isDone === false && (
-											<button
-												className="taskbtn"
-												onClick={() => toggleState(task.id)}
-											>
-												Edit
-											</button>
-										)}
-										{task.isDone === false && (
-											<button
-												className="taskbtn"
-												onClick={() => doneTask(task.id, true)}
-											>
-												Complete
-											</button>
-										)}
-									</div>
-								);
-							}
-						})}
-					</div>
+				<center className="todo_page">
+					<AddTodo addTask={addTask} newTask={newTask} setnewTask={setnewTask} />
+					<TodoList 
+					isediting={isediting} 
+					setisediting={setisediting} 
+					setUpdating={setUpdating} 
+					updateTask={updateTask} 
+					removeTask={removeTask} 
+					doneTask={doneTask} 
+					list={list} />
 				</center>
 			</div>
 		);
