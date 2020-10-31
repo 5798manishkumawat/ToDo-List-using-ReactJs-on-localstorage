@@ -1,9 +1,8 @@
 html {
 	font-family: "Lucida Sans", sans-serif;
-	background-image: url("bg3.jpg");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
-	height: 100vh;
+	margin: 0%;
 }
 
 * {
@@ -109,6 +108,8 @@ input[name="editinput"] {
 .tasktitle {
 	width: 70%;
 	box-sizing: border-box;
+	display: block;
+	overflow-wrap: break-word;
 	float: left;
 	padding-top: 0px;
 }
@@ -121,9 +122,8 @@ input[name="editinput"] {
 
 .todolist {
 	width: 90%;
-	height: 60%;
+	height: 55%;
 	box-sizing: border-box;
-	margin-bottom: 10%;
 	overflow-y: scroll;
 }
 

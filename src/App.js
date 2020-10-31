@@ -1,18 +1,20 @@
 import React from "react";
 import "./App.css";
 import LOGIN from "./componenets/login";
+
 import {
 	BrowserRouter as Router,
 	Route
   } from "react-router-dom";
   
-function App() {
+  
+  
+const App = () => {
 	return (
-		<Router>
-		<div className="bg">
+			<Router>
 			<Route path="/"><LOGIN /></Route>
-		</div>
-		</Router>
+			</Router>
+		
 	);
 }
 

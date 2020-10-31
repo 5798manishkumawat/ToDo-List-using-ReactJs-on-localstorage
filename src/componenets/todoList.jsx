@@ -12,15 +12,9 @@ function TodoList ({isediting,setUpdating,setisediting,updateTask,removeTask,don
 										<input
 											name="editinput"
 											type="text"
-											value={task.value}
+											defaultValue={task.value}
 											onChange={(e)=>setUpdating(e.target.value)}
 										/>
-										{/* <button
-											className="edittaskbtn"
-											onClick={() => updateTask(task.id)}
-										>
-											UpdateTask
-										</button> */}
 										<i className="fa fa-check ubtn" aria-hidden="true" onClick={() => updateTask(task.id)}></i>
 									</div>
 								);

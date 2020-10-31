@@ -1,15 +1,19 @@
 html {
 	font-family: "Lucida Sans", sans-serif;
-	background-image: url("bg1.jpg");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
-	height: 100%;
+	margin: 0%;
 }
 
 * {
 	box-sizing: border-box;
 }
-
+.bg {
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	height: 100vh;
+	margin: 0%;
+}
 .form {
 	border: 3px solid #c3e0e4;
 	border-radius: 5%;
@@ -92,11 +96,6 @@ span.psw {
 	width: 100%;
 }
 
-.todolist {
-	width: 100%;
-	box-sizing: border-box;
-	margin-bottom: 10%;
-}
 .todo_page {
 	box-sizing: border-box;
 	flex-direction: column;

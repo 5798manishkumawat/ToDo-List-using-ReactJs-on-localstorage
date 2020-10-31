@@ -70,7 +70,7 @@ function Login() {
 	};
 
 	return (
-		<div>
+		<div className="bg">
 			{currentEmail.length === 0 && (
 				<center>
 					<div className="form">

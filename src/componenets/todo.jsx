@@ -30,13 +30,12 @@ function Todo (props) {
 	const updateTask = (id) => {
 
 		const List = [...list];
-
+		console.log(updating);
 		List.map((task) => {
 			if (task.id === id) {
 				task.value = updating;
 			}
 		});
-		console.log(List);
 		setlist(List);
 		setisediting(null);
 		localStorage.setItem(`store${props.passEmail}`, JSON.stringify(List));
@@ -83,7 +82,7 @@ function Todo (props) {
 					isediting={isediting} 
 					setisediting={setisediting} 
 					setUpdating={setUpdating} 
-					updateTask={updateTask} 
+					updateTask={updateTask}
 					removeTask={removeTask} 
 					doneTask={doneTask} 
 					list={list} />
