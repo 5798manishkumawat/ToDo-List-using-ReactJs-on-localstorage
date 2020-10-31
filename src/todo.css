@@ -1,6 +1,6 @@
 html {
 	font-family: "Lucida Sans", sans-serif;
-	background-image: url("bg.jpg");
+	background-image: url("bg3.jpg");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	height: 100vh;
@@ -43,6 +43,69 @@ input[name="editinput"] {
 	font-size: 6px;
 }
 
+.rbtn {
+	width: 2%;
+	float: right;
+	height: fit-content;
+	max-height: fit-content;
+	box-sizing: border-box;
+	background-color: azure;
+	border: none;
+	color: rgb(236, 12, 12);
+	font-weight: bold;
+	text-align: center;
+	padding-top: 0.5%;
+	padding-bottom: 0.5%;
+	font-size: 20px;
+}
+
+.ebtn {
+	width: 2%;
+	float: right;
+	height: fit-content;
+	max-height: fit-content;
+	box-sizing: border-box;
+	background-color: azure;
+	border: none;
+	color: black;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 0.5%;
+	padding-bottom: 0.5%;
+	font-size: 15px;
+}
+
+.dbtn {
+	width: 2%;
+	float: right;
+	height: fit-content;
+	max-height: fit-content;
+	box-sizing: border-box;
+	background-color: azure;
+	border: none;
+	color: rgb(68, 207, 63);
+	font-weight: bold;
+	text-align: center;
+	padding-top: 0.5%;
+	padding-bottom: 0.5%;
+	font-size: 15px;
+}
+
+.ubtn {
+	width: 2%;
+	height: fit-content;
+	max-height: fit-content;
+	box-sizing: border-box;
+	background-color: azure;
+	border: none;
+	color: rgb(8, 75, 5);
+	font-weight: bold;
+	text-align: center;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	font-size: 15px;
+}
+
 .tasktitle {
 	width: 70%;
 	box-sizing: border-box;
@@ -53,13 +116,15 @@ input[name="editinput"] {
 .li {
 	box-sizing: border-box;
 	list-style-type: none;
-	width: 100%;
+	width: 90%;
 }
 
 .todolist {
-	width: 100%;
+	width: 90%;
+	height: 60%;
 	box-sizing: border-box;
 	margin-bottom: 10%;
+	overflow-y: scroll;
 }
 
 /* Change styles for span and cancel button on extra small screens */
@@ -71,4 +136,24 @@ input[name="editinput"] {
 	.taskbtn .edittaskbtn {
 		color: black;
 	}
+}
+
+/* Track */
+.todolist::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 1px rgb(94, 156, 238);
+	border-radius: 10px;
+}
+
+/* Handle */
+.todolist::-webkit-scrollbar-thumb {
+	background: rgb(181, 226, 238);
+	border-radius: 10px;
+}
+
+/* Handle on hover */
+.todolist::-webkit-scrollbar-thumb:hover {
+	background: #4260b3;
+}
+.todolist::-webkit-scrollbar {
+	width: 20px;
 }

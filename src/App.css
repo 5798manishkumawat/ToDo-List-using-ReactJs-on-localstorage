@@ -1,100 +1,112 @@
 html {
-  font-family: "Lucida Sans", sans-serif;
-  background-image: url("bg.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  height: 100%;
+	font-family: "Lucida Sans", sans-serif;
+	background-image: url("bg1.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	height: 100%;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .form {
-  border: 5px solid #7ca9af;
-  width: 50%;
-  height: 40%;
-  margin-top: 10%;
+	border: 3px solid #c3e0e4;
+	border-radius: 5%;
+	width: 50%;
+	height: 40%;
+	margin-top: 10%;
 }
 
-input[type=text],
-input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+.addtodoform {
+	border: 3px solid #4d8a8a;
+	width: 40%;
+	height: 30%;
+	margin-top: 5%;
+}
+
+input[type="text"],
+input[type="password"] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
 }
 
 .btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
+	background-color: #4caf50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
 }
 
 button:hover {
-  opacity: 0.8;
+	opacity: 0.8;
 }
 
 .imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
+	text-align: center;
+	margin: 24px 0 12px 0;
 }
 
 img.avatar {
-  width: 10%;
-  height: 10%;
-  border-radius: 50%;
+	width: 10%;
+	height: 10%;
+	border-radius: 50%;
 }
 
 .container {
-  padding: 16px;
+	padding: 16px;
 }
 
 span.psw {
-  float: right;
-  padding-top: 16px;
+	float: right;
+	padding-top: 16px;
 }
 
 .taskbtn {
-  width: 6%;
-  float: right;
-  font-size: relative;
+	width: 6%;
+	float: right;
+	font-size: relative;
 }
 
 .tasktitle {
-  width: 70%;
-  box-sizing: border-box;
-  float: left;
-  padding-top: 0px;
+	width: 70%;
+	box-sizing: border-box;
+	float: left;
+	padding-top: 0px;
 }
 
 .editinput {
-  widows: 15%;
+	widows: 15%;
 }
 
 .li {
-
-  box-sizing: border-box;
-  list-style-type: none;
-  width: 100%;
+	box-sizing: border-box;
+	list-style-type: none;
+	width: 100%;
 }
 
 .todolist {
-  width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 10%;
+	width: 100%;
+	box-sizing: border-box;
+	margin-bottom: 10%;
 }
-
+.todo_page {
+	box-sizing: border-box;
+	flex-direction: column;
+	width: 100%;
+	height: 100vh;
+}
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
-  span.psw {
-    display: block;
-    float: none;
-  }
+	span.psw {
+		display: block;
+		float: none;
+	}
 }
